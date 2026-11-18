@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "BC sandbox",
+      "type": "al",
+      "request": "launch",
+      "environmentType": "Sandbox",
+      "environmentName": "SANDBOX-NAME",
+      "tenant": "TENANT-ID",
+      "startupObjectId": 50110,
+      "startupObjectType": "Page",
+      "breakOnError": "All",
+      "schemaUpdateMode": "Synchronize"
+    }
+  ]
+}

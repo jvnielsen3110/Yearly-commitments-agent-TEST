@@ -1,0 +1,17 @@
+{
+  "id": "a3d5e7f9-1b2c-4d6e-8f01-23456789abcd",
+  "name": "Subscription Quote Agent Tests",
+  "publisher": "Default Publisher",
+  "version": "1.0.0.0",
+  "dependencies": [
+    { "id": "6f1c2a7e-3b4d-4e8f-9a51-2c7d8e9f0a13", "name": "Subscription Quote Agent", "publisher": "Default Publisher", "version": "1.0.0.0" },
+    { "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14", "name": "Library Assert", "publisher": "Microsoft", "version": "29.0.0.0" },
+    { "id": "5d86850b-0d76-4eca-bd7b-951ad998e997", "name": "Tests-TestLibraries", "publisher": "Microsoft", "version": "29.0.0.0" }
+  ],
+  "platform": "29.0.0.0",
+  "application": "29.0.0.0",
+  "idRanges": [ { "from": 50150, "to": 50159 } ],
+  "runtime": "17.0",
+  "target": "Cloud",
+  "features": [ "NoImplicitWith" ]
+}

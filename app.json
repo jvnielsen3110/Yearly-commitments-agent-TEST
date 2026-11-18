@@ -1,0 +1,36 @@
+{
+  "id": "6f1c2a7e-3b4d-4e8f-9a51-2c7d8e9f0a13",
+  "name": "Subscription Quote Agent",
+  "publisher": "Default Publisher",
+  "version": "1.0.0.0",
+  "brief": "Agent that prepares start-date priced quotes and customer subscription contracts.",
+  "description": "Creates sales quotes priced on the contract start date and turns them into Customer Subscription Contracts in Subscription Billing, driven by a Business Central agent.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Subscription Billing",
+      "publisher": "Microsoft",
+      "version": "29.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "29.0.0.0",
+  "application": "29.0.0.0",
+  "idRanges": [
+    { "from": 50100, "to": 50149 }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "resourceFolders": [ "Resources" ],
+  "runtime": "17.0",
+  "target": "Cloud",
+  "features": [ "NoImplicitWith", "TranslationFile" ]
+}
