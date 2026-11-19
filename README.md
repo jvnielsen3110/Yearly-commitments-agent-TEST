@@ -47,11 +47,24 @@ Requests created with **Send to Agent** run without approval (`SetRequiresReview
 | Resources/Instructions.txt | | Agent instructions |
 | test/ | Sub. Quote Pricing Test | Start-date pricing tests |
 
+## Prices from the TF subscription price table
+
+Prices come from the company's own table **50025 "MOB TFSubsc.Price"** (extension *Tasklet Internal*), not from BC sales price lists. `SQA TF Price Lookup` runs after BC's standard price calculation on every quote and order line and picks the line where:
+
+- Item No. = the line's item,
+- Currency = the document currency (blank = LCY; both blank and the LCY code are tried),
+- Start Date <= price date <= End Date (blank dates are open),
+- Quantity <= the line quantity (quantity tiers; the highest tier wins, then the latest start date).
+
+Price date = the quote's **Contract Start Date**, otherwise its **Order Date**. The **Monthly Price** goes into Unit Price. If no TF price is found, the standard BC price stays.
+
+Because the price is monthly, the customer subscription package lines must use **Billing Base Period = 1M** and **Calculation Base Type = Document Price**.
+
 ## Business Central setup
 
 1. **License items:** Type = Non-Inventory, Subscription Option = **Subscription Item**.
 2. **Subscription package** on each item, marked **Standard**, with a customer line: Invoicing via = Contract, Calculation Base Type = **Document Price** (so the start-date quote price carries into the subscription), Calculation Base % = 100, Billing Base Period, Billing Rhythm, Initial Term, Subsequent Term, Notice Period.
-3. **Sales price lists** with future-dated lines (Starting Date) for the license items.
+3. **TF subscription prices** (MOB TFSubsc. Prices) for each license item, currency and quantity tier.
 4. **Contract types** and Subscription Contract Setup as usual.
 5. **Copilot & agent capabilities:** turn on the Subscription Quote Agent capability and set up agent billing.
 6. Users: assign **SQA USER**. Admins: **SQA ADMIN** plus AGENT - ADMIN.
@@ -75,6 +88,9 @@ This code was written without compiling against BC 29.0 symbols. Check these poi
 - [ ] `Customer Subscription Contract` has a `Description` field. If not, remove that line in `Sub. Contract From Quote`.
 - [ ] Posting the shipment from code doesn't trigger UI dialogs.
 - [ ] The Subscription Billing permission set name to add to **SQA AGENT**.
+- [ ] The real App ID and publisher of **Tasklet Internal** in `app.json`.
+- [ ] `Sales Line.OnAfterUpdateUnitPrice` exists with the signature used in `SQA TF Price Lookup`.
+- [ ] TF Quantity means "from this many licenses" (minimum quantity tier).
 
 ## Docs
 
